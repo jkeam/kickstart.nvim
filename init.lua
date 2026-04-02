@@ -258,14 +258,16 @@ rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
-  { -- You can easily change to a different colorscheme.
-    'catppuccin/nvim', -- Example: Catppuccin
-    name = 'catppuccin',
-    priority = 1000, -- Ensure it loads before other plugins
-    init = function()
-      vim.cmd.colorscheme 'catppuccin-mocha' -- Set the variant
-      vim.cmd.hi 'Comment gui=none' -- Optional: specific highlights
-    end,
+  {
+    'sainnhe/sonokai',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.sonokai_enable_italic = true
+      vim.cmd.colorscheme('sonokai')
+    end
   },
   {
     "nvim-tree/nvim-tree.lua",
