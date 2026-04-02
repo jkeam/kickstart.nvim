@@ -258,6 +258,15 @@ rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+  { -- You can easily change to a different colorscheme.
+    'catppuccin/nvim', -- Example: Catppuccin
+    name = 'catppuccin',
+    priority = 1000, -- Ensure it loads before other plugins
+    init = function()
+      vim.cmd.colorscheme 'catppuccin-mocha' -- Set the variant
+      vim.cmd.hi 'Comment gui=none' -- Optional: specific highlights
+    end,
+  },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -626,7 +635,7 @@ require('lazy').setup({
       ---@type table<string, vim.lsp.Config>
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         --
